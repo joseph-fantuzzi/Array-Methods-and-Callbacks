@@ -100,17 +100,16 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(array, callback1, callback2, callback3) {
-    const finals = callback1(array);
-    const years = callback2(array, callback1);
-    const winners = callback3(array, callback1);
+function getWinnersByYear(array, callback1, callback2) {
+    const years = callback1(array, getFinals);
+    const winners = callback2(array, getFinals);
     const statements = winners.map(function(item, index) {
         return `In ${years[index]}, ${item} won the world cup!`;
     });
     return statements;
 }
 
-console.log('task 5', getWinnersByYear(fifaData, getFinals, getYears, getWinners));
+console.log('task 5', getWinnersByYear(fifaData, getYears, getWinners));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
